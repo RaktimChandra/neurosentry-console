@@ -11,22 +11,27 @@ from fastapi.staticfiles import StaticFiles
 
 from . import __version__
 from .config import settings
+from .api.middleware import RequestTimingMiddleware
 from .api.routes import health, patients, inference, metrics, stream
+from .core.logging_config import configure_logging, get_logger
+
+configure_logging("INFO")
+log = get_logger("app")
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Startup: bootstrap patient store + inference engine."""
-    print("[app] starting NeuroSentry Clinical Console...")
+    log.info("starting NeuroSentry Clinical Console v%s", __version__)
     # Patient store generates recordings on first run
     from .core.patients import get_patient_store
     get_patient_store()
     # Inference engine loads checkpoint (or trains one)
     from .core.inference import get_engine
     get_engine()
-    print("[app] ready.")
+    log.info("ready — listening on %s:%s", settings.host, settings.port)
     yield
-    print("[app] shutdown.")
+    log.info("shutdown")
 
 
 app = FastAPI(
@@ -40,12 +45,14 @@ app = FastAPI(
 )
 
 
+app.add_middleware(RequestTimingMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=list(settings.cors_origins),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["X-Request-ID", "X-Response-Time-ms"],
 )
 
 
