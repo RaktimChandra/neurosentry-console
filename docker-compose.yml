@@ -1,0 +1,26 @@
+services:
+  console:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: neurosentry-console
+    ports:
+      - "8000:8000"
+    environment:
+      - NEUROSENTRY_HOST=0.0.0.0
+      - NEUROSENTRY_PORT=8000
+    volumes:
+      # Persist the trained checkpoint and generated patient data across restarts
+      - checkpoints:/app/backend/checkpoints
+      - patient-data:/app/backend/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8000/api/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 120s
+
+volumes:
+  checkpoints:
+  patient-data:
