@@ -7,6 +7,7 @@ import { LatentStatePanel } from "./components/LatentStatePanel";
 import { MetricsPanel } from "./components/MetricsPanel";
 import { Controls } from "./components/Controls";
 import { Timeline } from "./components/Timeline";
+import { ShortcutsHint } from "./components/ShortcutsHint";
 import { useApp } from "./lib/store";
 import { fetchPatients, fetchMetrics } from "./lib/api";
 import { useStream } from "./hooks/useStream";
@@ -95,6 +96,7 @@ export default function App() {
           <div className="pill"><span className="led led-amber" /> Starting up…</div>
         </div>
       )}
+      <ShortcutsHint />
     </div>
   );
 }
