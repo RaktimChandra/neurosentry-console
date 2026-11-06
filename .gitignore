@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+env/
+.env
+.env.local
+
+# Node
+node_modules/
+frontend/dist/
+.vite/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Build artifacts
+build/
+*.egg
+
+# Local trained artifacts (users bootstrap their own on first run)
+backend/checkpoints/*.pt
+backend/data/patients/*.npz
+backend/data/patients/*.json
+
+# Screenshots / dev scratch
+ui_*.png
+/tmp/
