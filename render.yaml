@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: neurosentry-console
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    region: oregon
+    healthCheckPath: /api/health
+    envVars:
+      - key: NEUROSENTRY_HOST
+        value: "0.0.0.0"
+    disk:
+      name: data
+      mountPath: /app/backend/data
+      sizeGB: 1
