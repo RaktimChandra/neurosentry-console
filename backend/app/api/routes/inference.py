@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field
 import numpy as np
 
 from ...config import settings
+from ...core.cache import inference_cache
 from ...core.inference import get_engine
 from ...core.patients import get_patient_store
 
@@ -47,6 +48,12 @@ def infer_patient_window(pid: str, index: int) -> dict:
                             detail=f"window index {index} out of [0, {n_windows})")
     start = index * S
     end = start + T
+
+    cache_key = f"{pid}:{index}"
+    cached = inference_cache.get(cache_key)
+    if cached is not None:
+        return cached
+
     window = eeg[start:end]
     engine = get_engine()
     result = engine.infer_window(window)
@@ -56,6 +63,7 @@ def infer_patient_window(pid: str, index: int) -> dict:
     result["window_index"] = index
     result["window_start_s"] = round(start / settings.fs, 3)
     result["window_end_s"] = round(end / settings.fs, 3)
+    inference_cache.set(cache_key, result)
     return result
 
 
