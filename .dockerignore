@@ -1,0 +1,16 @@
+**/__pycache__
+**/*.pyc
+**/.venv
+**/node_modules
+**/dist
+**/.pytest_cache
+backend/checkpoints/*.pt
+backend/data/patients/*
+ui_*.png
+.git
+.github
+.vscode
+.idea
+*.md
+!README.md
+docs/
