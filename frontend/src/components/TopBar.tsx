@@ -1,4 +1,6 @@
 import { useApp } from "../lib/store";
+import { LatencySparkline } from "./LatencySparkline";
+import { LiveAccuracy } from "./LiveAccuracy";
 
 export function TopBar() {
   const { connected, wsError, meta, frame } = useApp();
@@ -47,8 +49,10 @@ export function TopBar() {
           <div className="hidden md:flex items-center gap-2 pill">
             <span className="text-slate-400">Inference</span>
             <span className="text-slate-100">{latency} ms</span>
+            <LatencySparkline />
           </div>
         )}
+        <div className="hidden lg:block"><LiveAccuracy /></div>
         <div className="pill" title={wsError ?? ""}>
           <span className={`led ${connected ? "led-green" : "led-red"}`} />
           <span>{connected ? "LIVE" : wsError ? "ERROR" : "OFFLINE"}</span>
