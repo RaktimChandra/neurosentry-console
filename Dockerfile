@@ -31,12 +31,14 @@ RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch \
     && pip install --no-cache-dir -r backend/requirements.txt
 
-# Copy backend source
+# Copy backend source + shipped pretrained checkpoint + shipped patient recordings
 COPY backend/app ./backend/app
+COPY backend/checkpoints ./backend/checkpoints
+COPY backend/data ./backend/data
 # Copy built frontend into the expected location
 COPY --from=frontend-builder /build/dist ./frontend/dist
 
-# Writable dirs for runtime-generated data and bootstrapped checkpoint
+# Ensure the dirs exist even if a user mounts an empty volume
 RUN mkdir -p /app/backend/data /app/backend/checkpoints
 
 ENV PYTHONUNBUFFERED=1 \
