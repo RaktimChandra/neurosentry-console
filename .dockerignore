@@ -4,8 +4,8 @@
 **/node_modules
 **/dist
 **/.pytest_cache
-backend/checkpoints/*.pt
-backend/data/patients/*
+# Note: keep backend/checkpoints and backend/data/patients IN the image so the
+# deployment doesn't need to self-train on cold boot (free-tier RAM is tight).
 ui_*.png
 .git
 .github

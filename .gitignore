@@ -30,10 +30,12 @@ Thumbs.db
 build/
 *.egg
 
-# Local trained artifacts (users bootstrap their own on first run)
-backend/checkpoints/*.pt
-backend/data/patients/*.npz
-backend/data/patients/*.json
+# Local trained artifacts — the shipped hybrid.pt and p01-p06 patient recordings
+# are checked in so deployments don't need to bootstrap-train on first boot
+# (free-tier RAM limits make training-on-boot unreliable).
+# .pt or .npz files from subsequent user experiments remain ignored.
+backend/checkpoints/*.pt.local
+backend/data/patients/*.local.npz
 
 # Screenshots / dev scratch
 ui_*.png
