@@ -3,7 +3,7 @@
 # Stage 2: install Python + torch, copy backend + built frontend, run uvicorn.
 
 # -------- Stage 1: frontend build --------
-FROM node:20-alpine AS frontend-builder
+FROM node:25-alpine AS frontend-builder
 WORKDIR /build
 
 # Install deps first (better layer cache)
