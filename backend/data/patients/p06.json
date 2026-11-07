@@ -1,0 +1,31 @@
+{
+  "id": "p06",
+  "label": "Case F \u2014 Late onset",
+  "description": "Long interictal lead-in, abrupt transition near end of recording.",
+  "duration_s": 100.0,
+  "fs": 128,
+  "n_samples": 14286,
+  "seed": 66,
+  "schedule": [
+    {
+      "regime": "interictal",
+      "start_s": 0.0,
+      "end_s": 70.0
+    },
+    {
+      "regime": "preictal",
+      "start_s": 70.0,
+      "end_s": 78.0
+    },
+    {
+      "regime": "ictal",
+      "start_s": 78.0,
+      "end_s": 95.0
+    },
+    {
+      "regime": "interictal",
+      "start_s": 95.0,
+      "end_s": 100.0
+    }
+  ]
+}

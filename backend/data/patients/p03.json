@@ -1,0 +1,46 @@
+{
+  "id": "p03",
+  "label": "Case C \u2014 Multiple events",
+  "description": "Two separate seizure events separated by a resting period.",
+  "duration_s": 120.0,
+  "fs": 128,
+  "n_samples": 17143,
+  "seed": 33,
+  "schedule": [
+    {
+      "regime": "interictal",
+      "start_s": 0.0,
+      "end_s": 18.0
+    },
+    {
+      "regime": "preictal",
+      "start_s": 18.0,
+      "end_s": 25.0
+    },
+    {
+      "regime": "ictal",
+      "start_s": 25.0,
+      "end_s": 35.0
+    },
+    {
+      "regime": "interictal",
+      "start_s": 35.0,
+      "end_s": 65.0
+    },
+    {
+      "regime": "preictal",
+      "start_s": 65.0,
+      "end_s": 72.0
+    },
+    {
+      "regime": "ictal",
+      "start_s": 72.0,
+      "end_s": 85.0
+    },
+    {
+      "regime": "interictal",
+      "start_s": 85.0,
+      "end_s": 120.0
+    }
+  ]
+}

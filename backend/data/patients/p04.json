@@ -1,0 +1,16 @@
+{
+  "id": "p04",
+  "label": "Case D \u2014 Interictal only",
+  "description": "No seizure activity. Used to verify specificity (no false alarms).",
+  "duration_s": 75.0,
+  "fs": 128,
+  "n_samples": 10715,
+  "seed": 44,
+  "schedule": [
+    {
+      "regime": "interictal",
+      "start_s": 0.0,
+      "end_s": 75.0
+    }
+  ]
+}

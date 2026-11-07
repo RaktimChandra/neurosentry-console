@@ -1,0 +1,31 @@
+{
+  "id": "p05",
+  "label": "Case E \u2014 Classical presentation",
+  "description": "Standard three-phase pattern: baseline, buildup, seizure, recovery.",
+  "duration_s": 90.0,
+  "fs": 128,
+  "n_samples": 12858,
+  "seed": 55,
+  "schedule": [
+    {
+      "regime": "interictal",
+      "start_s": 0.0,
+      "end_s": 25.0
+    },
+    {
+      "regime": "preictal",
+      "start_s": 25.0,
+      "end_s": 38.0
+    },
+    {
+      "regime": "ictal",
+      "start_s": 38.0,
+      "end_s": 52.0
+    },
+    {
+      "regime": "interictal",
+      "start_s": 52.0,
+      "end_s": 90.0
+    }
+  ]
+}

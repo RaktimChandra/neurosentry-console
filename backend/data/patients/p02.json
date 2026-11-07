@@ -1,0 +1,31 @@
+{
+  "id": "p02",
+  "label": "Case B \u2014 Rapid onset",
+  "description": "Short preictal window followed by a prolonged ictal episode.",
+  "duration_s": 80.0,
+  "fs": 128,
+  "n_samples": 11429,
+  "seed": 22,
+  "schedule": [
+    {
+      "regime": "interictal",
+      "start_s": 0.0,
+      "end_s": 20.0
+    },
+    {
+      "regime": "preictal",
+      "start_s": 20.0,
+      "end_s": 26.0
+    },
+    {
+      "regime": "ictal",
+      "start_s": 26.0,
+      "end_s": 50.0
+    },
+    {
+      "regime": "interictal",
+      "start_s": 50.0,
+      "end_s": 80.0
+    }
+  ]
+}
